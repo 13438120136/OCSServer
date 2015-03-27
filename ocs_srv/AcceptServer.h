@@ -16,7 +16,6 @@ public:
 	uv_tcp_t &uvTcp();
 	MessageMap &msgMap();
 	void start(std::string ip, int port);
-	void postAccept();
 
 private:
 	uv_tcp_t m_uvTcp;
