@@ -80,6 +80,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AcceptServer.cpp" />
+    <ClCompile Include="ConnectServer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MessageMap.cpp" />
     <ClCompile Include="Scheduler.cpp" />
@@ -87,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AcceptServer.h" />
+    <ClInclude Include="ConnectServer.h" />
     <ClInclude Include="MessageMap.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="Session.h" />

@@ -14,6 +14,7 @@ public:
 	void append(char *buf, int size);
 	void setBuffer(uv_buf_t *buf, int size);
 	void sendMessage(char *buf, int size);
+	virtual int check(const std::vector<char> &buf);
 
 private:
 	std::vector<char> m_recvBuf;

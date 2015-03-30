@@ -20,9 +20,15 @@ Session::~Session()
 
 void Session::append(char *buf, int size)
 {
-	sendMessage(buf, size);
-	//m_recvBuf.insert(m_recvBuf.end(), buf, buf+size);
-	//m_msgMap.dispatchMsg(&m_recvBuf[0], m_recvBuf.size());
+	m_recvBuf.insert(m_recvBuf.end(), buf, buf+size);
+	while (1)
+	{
+		int offset = check(m_recvBuf);
+		if (offset == 0)
+			break;
+		m_msgMap.dispatchMsg(&m_recvBuf[0], m_recvBuf.size());
+		m_recvBuf.erase(m_recvBuf.begin(), m_recvBuf.begin() + offset);
+	}
 }
 
 void Session::setBuffer(uv_buf_t *buf, int size)
@@ -52,4 +58,9 @@ void Session::sendMessage(char *buf, int size)
 
 	uv_buf_t uvBuf = uv_buf_init(buf, size); 
 	uv_write(req, (uv_stream_t *)&m_uvClient, &uvBuf, 1, write_cb);
+}
+
+int Session::check(const std::vector<char> &buf)
+{
+	return buf.size();
 }

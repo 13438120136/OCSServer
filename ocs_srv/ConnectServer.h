@@ -1,26 +1,27 @@
-#ifndef _ACCEPTSERVER_INCLUDE
-#define _ACCEPTSERVER_INCLUDE
+#ifndef _CONNECTSERVER_INCLUDE
+#define _CONNECTSERVER_INCLUDE
 
 #include <uv.h>
 #include <string>
 #include "Scheduler.h"
 #include "MessageMap.h"
+#include "Session.h"
 
-class AcceptServer
+class ConnectServer
 {
 public:
-	AcceptServer(Scheduler &scheduler);
-	~AcceptServer(void);
-
+	ConnectServer(Scheduler &scheduler);
+	~ConnectServer(void);
+	MessageMap &msgMap();
 	Scheduler &scheduler();
 	uv_tcp_t &uvTcp();
-	MessageMap &msgMap();
 	void start(const std::string &ip, int port);
 
 private:
+	Scheduler &m_scheduler;
 	uv_tcp_t m_uvTcp;
 	MessageMap m_msgMap;
-	Scheduler &m_scheduler;
+	Session m_session;
 };
 
 #endif

@@ -66,7 +66,6 @@ AcceptServer::AcceptServer(Scheduler &scheduler)
 	:m_scheduler(scheduler)
 {
 	m_uvTcp.data = this;
-	
 }
 
 AcceptServer::~AcceptServer(void)
@@ -88,7 +87,7 @@ MessageMap &AcceptServer::msgMap()
 	return m_msgMap;
 }
 
-void AcceptServer::start(std::string ip, int port)
+void AcceptServer::start(const std::string &ip, int port)
 {
 	struct sockaddr_in addr;
 	uv_ip4_addr(ip.c_str(), port, &addr);
