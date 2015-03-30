@@ -1,4 +1,5 @@
 #include "ConnectServer.h"
+#include "Logger.h"
 
 static void echo_alloc(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
 {
@@ -42,9 +43,11 @@ static void connection_cb(uv_connect_t* req, int status)
 	int ret = uv_read_start((uv_stream_t *)&uvTcp, echo_alloc, read_cb);
     if (ret)
 	{
-        fprintf(stderr, "Start Read error %s\n", uv_strerror(ret));
+        LOG(ERROR) << "ConnectServer Start Read error:" <<  uv_strerror(ret);
         exit(-1);
     }
+
+	LOG(INFO) << "ConnectServer Start Success";
 }
 
 ConnectServer::ConnectServer(Scheduler &scheduler)
@@ -83,7 +86,7 @@ void ConnectServer::start(const std::string &ip, int port)
 	ret = uv_tcp_init(m_scheduler.instance(), &m_uvTcp);
 	if (ret)
 	{
-		fprintf(stderr, "Init error %s\n", uv_strerror(ret));
+		LOG(ERROR) << "ConnectServer Init error :" << uv_strerror(ret);
 		exit(-1);
 	}
 
@@ -93,7 +96,7 @@ void ConnectServer::start(const std::string &ip, int port)
 	ret = uv_tcp_connect(connect, &m_uvTcp, (struct sockaddr *)&addr, connection_cb);
 	if (ret)
 	{
-		fprintf(stderr, "Connect error %s\n", uv_strerror(ret));
+		LOG(ERROR) << "ConnectServer Connect error " << uv_strerror(ret);
 		exit(-1);
 	}
 }

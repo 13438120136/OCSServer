@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <uv.h>
+#include "Logger.h"
 #include "AcceptServer.h"
 #include "ConnectServer.h"
 
 int main()
 {
-	Scheduler sch;
-	ConnectServer ac(sch);
-
-	ac.start("192.168.2.201", 9000);
-	sch.run();
-
+	Logger log;
+	Scheduler ss;
+	AcceptServer ac(ss);
+	ac.start("0.0.0.0", 9000);
+	ss.run();
 	return 0;
 }

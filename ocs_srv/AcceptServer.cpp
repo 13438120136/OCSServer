@@ -1,6 +1,7 @@
 #include <string.h>  
 #include "AcceptServer.h"
 #include "Session.h"
+#include "Logger.h"
                             
 static void echo_alloc(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
 {
@@ -48,14 +49,14 @@ static void on_new_connection(uv_stream_t *server, int status)
 	ret = uv_accept(server, clientStream);
     if (ret)
 	{
-        fprintf(stderr, "Accept error %s\n", uv_strerror(ret));
+        LOG(ERROR) << "AcceptServer Accept error: " << uv_strerror(ret);
         exit(-1);
     }
 
 	ret = uv_read_start(clientStream, echo_alloc, read_cb);
     if (ret)
 	{
-        fprintf(stderr, "Start Read error %s\n", uv_strerror(ret));
+        LOG(ERROR) << "AcceptServer Start Read error: " << uv_strerror(ret);
         exit(-1);
     }
 
@@ -92,26 +93,26 @@ void AcceptServer::start(const std::string &ip, int port)
 	struct sockaddr_in addr;
 	uv_ip4_addr(ip.c_str(), port, &addr);
 
-	int ret = 0;
-
-	ret = uv_tcp_init(m_scheduler.instance(), &m_uvTcp);
+	int ret = uv_tcp_init(m_scheduler.instance(), &m_uvTcp);
 	if (ret)
 	{
-		fprintf(stderr, "Init error %s\n", uv_strerror(ret));
+		LOG(ERROR) << "AcceptServer Init error :" << uv_strerror(ret);
 		exit(-1);
 	}
 
 	ret = uv_tcp_bind(&m_uvTcp, (struct sockaddr *)&addr, 0);
 	if (ret)
 	{
-		fprintf(stderr, "Bind error %s\n", uv_strerror(ret));
+		LOG(ERROR) << "AcceptServer Bind error " << uv_strerror(ret);
 		exit(-1);
 	}
 
 	ret = uv_listen((uv_stream_t *)&m_uvTcp, 128, on_new_connection);
     if (ret)
 	{
-        fprintf(stderr, "Listen error %s\n", uv_strerror(ret));
+        LOG(ERROR) << "AcceptServer Listen error " << uv_strerror(ret);
         exit(-1);
     }
+
+	LOG(INFO) << "AcceptServer Start Success";
 }
