@@ -36,8 +36,6 @@ static void read_cb(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
 static void connection_cb(uv_connect_t* req, int status)
 {
 	ConnectServer *curr = (ConnectServer *)req->data;
-	delete req;
-
 	uv_tcp_t &uvTcp = curr->uvTcp();
 
 	int ret = uv_read_start((uv_stream_t *)&uvTcp, echo_alloc, read_cb);
@@ -54,7 +52,7 @@ ConnectServer::ConnectServer(Scheduler &scheduler)
 	:m_scheduler(scheduler)
 	,m_session(m_uvTcp, m_msgMap)
 {
-	m_uvTcp.data = this;
+	m_uvConnect.data = this;
 }
 
 ConnectServer::~ConnectServer(void)
@@ -90,10 +88,7 @@ void ConnectServer::start(const std::string &ip, int port)
 		exit(-1);
 	}
 
-	uv_connect_t *connect = new uv_connect_t;
-	connect->data = this;
-
-	ret = uv_tcp_connect(connect, &m_uvTcp, (struct sockaddr *)&addr, connection_cb);
+	ret = uv_tcp_connect(&m_uvConnect, &m_uvTcp, (struct sockaddr *)&addr, connection_cb);
 	if (ret)
 	{
 		LOG(ERROR) << "ConnectServer Connect error " << uv_strerror(ret);

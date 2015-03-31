@@ -20,6 +20,7 @@ public:
 private:
 	Scheduler &m_scheduler;
 	uv_tcp_t m_uvTcp;
+	uv_connect_t m_uvConnect;
 	MessageMap m_msgMap;
 	Session m_session;
 };

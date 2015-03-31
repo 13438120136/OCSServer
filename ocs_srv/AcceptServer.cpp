@@ -24,8 +24,6 @@ static void read_cb(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf)
 	}
 	else if (nread < 0)
 	{
-		Session *session = (Session *)stream->data;
-		delete session;
 		uv_read_stop(stream);
 		uv_close((uv_handle_t*)stream, close_cb);
 	}
@@ -43,6 +41,7 @@ static void on_new_connection(uv_stream_t *server, int status)
 	uv_loop_t *loop = (curr->scheduler()).instance();
 
 	uv_tcp_t *client = new uv_tcp_t;
+	client->data = curr;
 	uv_stream_t *clientStream = (uv_stream_t *)client;
 
 	ret = uv_tcp_init(loop, client);
@@ -61,6 +60,7 @@ static void on_new_connection(uv_stream_t *server, int status)
     }
 
 	Session *session = new Session(*client, curr->msgMap());
+	curr->connect(session);
 }
 
 AcceptServer::AcceptServer(Scheduler &scheduler)
@@ -86,6 +86,14 @@ uv_tcp_t &AcceptServer::uvTcp()
 MessageMap &AcceptServer::msgMap()
 {
 	return m_msgMap;
+}
+
+void AcceptServer::connect(Session *session)
+{
+}
+
+void AcceptServer::disconnect(Session *session)
+{
 }
 
 void AcceptServer::start(const std::string &ip, int port)
