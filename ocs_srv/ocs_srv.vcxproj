@@ -11,18 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\AcceptServer.h" />
-    <ClInclude Include="inc\AsyncTask.h" />
-    <ClInclude Include="inc\ConnectServer.h" />
-    <ClInclude Include="inc\IPAddress.h" />
-    <ClInclude Include="inc\Logger.h" />
-    <ClInclude Include="inc\MessageMap.h" />
-    <ClInclude Include="inc\Scheduler.h" />
-    <ClInclude Include="inc\Session.h" />
-    <ClInclude Include="inc\SocketHand.h" />
-    <ClInclude Include="inc\TimeTask.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\AcceptServer.cpp" />
     <ClCompile Include="src\AsyncTask.cpp" />
     <ClCompile Include="src\ConnectServer.cpp" />
@@ -34,6 +22,18 @@
     <ClCompile Include="src\Session.cpp" />
     <ClCompile Include="src\SocketHand.cpp" />
     <ClCompile Include="src\TimeTask.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\ocsserver\AcceptServer.h" />
+    <ClInclude Include="..\include\ocsserver\AsyncTask.h" />
+    <ClInclude Include="..\include\ocsserver\ConnectServer.h" />
+    <ClInclude Include="..\include\ocsserver\IPAddress.h" />
+    <ClInclude Include="..\include\ocsserver\Logger.h" />
+    <ClInclude Include="..\include\ocsserver\MessageMap.h" />
+    <ClInclude Include="..\include\ocsserver\Scheduler.h" />
+    <ClInclude Include="..\include\ocsserver\Session.h" />
+    <ClInclude Include="..\include\ocsserver\SocketHand.h" />
+    <ClInclude Include="..\include\ocsserver\TimeTask.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A05492F8-77E8-41C2-A8A2-266161A4CBDD}</ProjectGuid>
@@ -77,7 +77,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;OCSSERVER_API_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\ocs_srv\inc;..\include\libuv;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include\ocsserver;..\include\libuv;..\include\glog;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

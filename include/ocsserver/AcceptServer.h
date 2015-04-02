@@ -1,7 +1,6 @@
 #ifndef _ACCEPTSERVER_INCLUDE
 #define _ACCEPTSERVER_INCLUDE
 
-#include <uv.h>
 #include <string>
 #include "Scheduler.h"
 #include "MessageMap.h"

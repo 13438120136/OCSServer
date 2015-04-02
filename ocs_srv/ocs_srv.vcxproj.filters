@@ -15,38 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\AcceptServer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\AsyncTask.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ConnectServer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\IPAddress.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Logger.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\MessageMap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Scheduler.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Session.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\SocketHand.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\TimeTask.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\AcceptServer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -80,5 +48,37 @@
     <ClCompile Include="src\TimeTask.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\ocsserver\AcceptServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\AsyncTask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\ConnectServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\IPAddress.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\Logger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\MessageMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\Scheduler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\Session.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\SocketHand.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ocsserver\TimeTask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
