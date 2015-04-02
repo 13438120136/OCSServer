@@ -10,6 +10,8 @@
 #define OCSSERVER_API __declspec(dllimport)
 #endif
 
+#pragma warning(disable: 4251)
+
 class OCSSERVER_API IPAddress
 {
 public:

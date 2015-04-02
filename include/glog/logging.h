@@ -1130,11 +1130,13 @@ public:
   // http://msdn.microsoft.com/en-us/library/3tdb471s(VS.80).aspx
   // Let's just ignore the warning.
 #ifdef _MSC_VER
-# pragma warning(disable: 4275)
+#pragma warning(disable: 4275)
+#pragma warning(disable: 4251)
 #endif
   class GOOGLE_GLOG_DLL_DECL LogStream : public std::ostream {
 #ifdef _MSC_VER
-# pragma warning(default: 4275)
+#pragma warning(default: 4275)
+#pragma warning(disable: 4251)
 #endif
   public:
     LogStream(char *buf, int len, int ctr)
