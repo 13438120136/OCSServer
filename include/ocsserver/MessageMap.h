@@ -17,7 +17,7 @@ public:
 	~MessageMap();
 
 	virtual int check(std::vector<char> &buf);
-	void dispatchMsg(std::vector<char> &buf, Session &session);
+	virtual void dispatchMsg(std::vector<char> &buf, Session &session);
 };
 
 #endif

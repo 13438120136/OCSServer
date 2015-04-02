@@ -28,7 +28,7 @@ public:
 	virtual void msgcomming(Session *session);
 
 private:
-	MessageMap m_msgMap;
+	MessageMap *m_msgMap;
 };
 
 #endif

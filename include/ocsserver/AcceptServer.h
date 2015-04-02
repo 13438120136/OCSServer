@@ -19,6 +19,7 @@ public:
 	AcceptServer(Scheduler &scheduler);
 	~AcceptServer(void);
 
+	void setMsgMap(MessageMap *msgMap);
 	MessageMap &msgMap();
 	void start(const std::string &ip, unsigned int port);
 	void start(const IPAddress &address);
@@ -29,7 +30,7 @@ public:
 	virtual void disconnect(Session *session);
 
 private:
-	MessageMap m_msgMap;
+	MessageMap *m_msgMap;
 };
 
 #endif
