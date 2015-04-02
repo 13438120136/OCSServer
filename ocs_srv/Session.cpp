@@ -1,8 +1,7 @@
 #include "Session.h"
 
-Session::Session(uv_tcp_t &uvTcp, MessageMap &msgMap)
-	:m_uvClient(uvTcp)
-	,m_msgMap(msgMap)
+Session::Session(uv_tcp_t &client)
+	:m_uvClient(client)
 {
 	m_uvBuf = nullptr;
 	m_uvClient.data = this;
@@ -21,12 +20,18 @@ Session::~Session()
 void Session::append(char *buf, int size)
 {
 	m_recvBuf.insert(m_recvBuf.end(), buf, buf+size);
+}
+
+void Session::render(MessageMap &msgMap)
+{
 	while (1)
 	{
-		int offset = check(m_recvBuf);
-		if (offset == 0)
+		int offset = msgMap.check(m_recvBuf);
+		if (offset <= 0)
 			break;
-		m_msgMap.dispatchMsg(&m_recvBuf[0], m_recvBuf.size());
+
+		sendMessage(&m_recvBuf[0], m_recvBuf.size());
+		msgMap.dispatchMsg(&m_recvBuf[0], m_recvBuf.size());
 		m_recvBuf.erase(m_recvBuf.begin(), m_recvBuf.begin() + offset);
 	}
 }
@@ -60,7 +65,8 @@ void Session::sendMessage(char *buf, int size)
 	uv_write(req, (uv_stream_t *)&m_uvClient, &uvBuf, 1, write_cb);
 }
 
-int Session::check(const std::vector<char> &buf)
+void Session::destory()
 {
-	return buf.size();
+	uv_read_stop((uv_stream_t *)&m_uvClient);
+	uv_close((uv_handle_t*)&m_uvClient, nullptr);
 }

@@ -86,6 +86,7 @@
     <ClCompile Include="MessageMap.cpp" />
     <ClCompile Include="Scheduler.cpp" />
     <ClCompile Include="Session.cpp" />
+    <ClCompile Include="SocketHand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AcceptServer.h" />
@@ -94,6 +95,7 @@
     <ClInclude Include="MessageMap.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="Session.h" />
+    <ClInclude Include="SocketHand.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

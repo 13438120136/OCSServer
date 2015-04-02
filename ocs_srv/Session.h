@@ -8,18 +8,18 @@
 class Session
 {
 public:
-	Session(uv_tcp_t &uvTcp, MessageMap &msgMap);
+	Session(uv_tcp_t &client);
 	~Session();
 
 	void append(char *buf, int size);
 	void setBuffer(uv_buf_t *buf, int size);
 	void sendMessage(char *buf, int size);
-	virtual int check(const std::vector<char> &buf);
+	void render(MessageMap &msgMap);
+	void destory();
 
 private:
 	std::vector<char> m_recvBuf;
 	uv_tcp_t &m_uvClient;
-	MessageMap &m_msgMap;
 	uv_buf_t *m_uvBuf;
 };
 

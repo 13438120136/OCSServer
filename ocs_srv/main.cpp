@@ -8,8 +8,8 @@ int main()
 {
 	Logger log;
 	Scheduler ss;
-	AcceptServer ac(ss);
-	ac.start("192.168.2.201", 9000);
+	ConnectServer ac(ss);
+	ac.start("192.168.2.201", 9001);
 	ss.run();
 	return 0;
 }
