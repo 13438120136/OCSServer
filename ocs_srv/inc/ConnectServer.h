@@ -8,7 +8,13 @@
 #include "SocketHand.h"
 #include "IPAddress.h"
 
-class ConnectServer : public SocketHand
+#ifdef OCSSERVER_API_EXPORTS
+#define OCSSERVER_API __declspec(dllexport)
+#else
+#define OCSSERVER_API __declspec(dllimport)
+#endif
+
+class OCSSERVER_API ConnectServer : public SocketHand
 {
 public:
 	ConnectServer(Scheduler &scheduler);

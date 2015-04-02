@@ -4,7 +4,13 @@
 #include <uv.h>
 #include <string>
 
-class IPAddress
+#ifdef OCSSERVER_API_EXPORTS
+#define OCSSERVER_API __declspec(dllexport)
+#else
+#define OCSSERVER_API __declspec(dllimport)
+#endif
+
+class OCSSERVER_API IPAddress
 {
 public:
 	IPAddress(void);

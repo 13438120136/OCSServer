@@ -4,7 +4,13 @@
 #include <uv.h>
 #include "Scheduler.h"
 
-class AsyncTask
+#ifdef OCSSERVER_API_EXPORTS
+#define OCSSERVER_API __declspec(dllexport)
+#else
+#define OCSSERVER_API __declspec(dllimport)
+#endif
+
+class OCSSERVER_API AsyncTask
 {
 public:
 	AsyncTask(Scheduler &scheduler);

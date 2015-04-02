@@ -4,6 +4,12 @@
 #include <uv.h>
 #include "Scheduler.h"
 
+#ifdef OCSSERVER_API_EXPORTS
+#define OCSSERVER_API __declspec(dllexport)
+#else
+#define OCSSERVER_API __declspec(dllimport)
+#endif
+
 struct ConnHander
 {
 	uv_tcp_t tcp;
@@ -18,7 +24,7 @@ struct ServerInstance
 };
 
 class Session;
-class SocketHand
+class OCSSERVER_API SocketHand
 {
 public:
 	SocketHand(Scheduler &scheduler);

@@ -15,70 +15,70 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Scheduler.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="AcceptServer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Session.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MessageMap.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ConnectServer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Logger.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SocketHand.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="IPAddress.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="AsyncTask.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeTask.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
+    <ClInclude Include="inc\AcceptServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\AsyncTask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ConnectServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\IPAddress.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Logger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\MessageMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Scheduler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Session.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\SocketHand.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\TimeTask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Scheduler.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="AcceptServer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Session.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MessageMap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ConnectServer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Logger.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="SocketHand.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="IPAddress.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="AsyncTask.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeTask.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
+    <ClCompile Include="src\AcceptServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AsyncTask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ConnectServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IPAddress.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Logger.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MessageMap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scheduler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Session.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SocketHand.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TimeTask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

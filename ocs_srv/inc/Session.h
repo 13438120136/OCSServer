@@ -6,7 +6,13 @@
 #include "MessageMap.h"
 #include "IPAddress.h"
 
-class Session
+#ifdef OCSSERVER_API_EXPORTS
+#define OCSSERVER_API __declspec(dllexport)
+#else
+#define OCSSERVER_API __declspec(dllimport)
+#endif
+
+class OCSSERVER_API Session
 {
 public:
 	Session(uv_tcp_t &client);

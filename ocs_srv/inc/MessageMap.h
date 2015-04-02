@@ -3,8 +3,14 @@
 
 #include <vector>
 
+#ifdef OCSSERVER_API_EXPORTS
+#define OCSSERVER_API __declspec(dllexport)
+#else
+#define OCSSERVER_API __declspec(dllimport)
+#endif
+
 class Session;
-class MessageMap
+class OCSSERVER_API MessageMap
 {
 public:
 	MessageMap();

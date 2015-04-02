@@ -3,10 +3,16 @@
 
 #include <uv.h>
 
+#ifdef OCSSERVER_API_EXPORTS
+#define OCSSERVER_API __declspec(dllexport)
+#else
+#define OCSSERVER_API __declspec(dllimport)
+#endif
+
 /*
  * 程序的调度器 
  */
-class Scheduler
+class OCSSERVER_API Scheduler
 {
 public:
 	Scheduler();
