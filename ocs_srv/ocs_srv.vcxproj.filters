@@ -42,6 +42,12 @@
     <ClCompile Include="IPAddress.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="AsyncTask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeTask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scheduler.h">
@@ -66,6 +72,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="IPAddress.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncTask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeTask.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

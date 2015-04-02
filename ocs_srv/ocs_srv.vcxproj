@@ -80,6 +80,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AcceptServer.cpp" />
+    <ClCompile Include="AsyncTask.cpp" />
     <ClCompile Include="ConnectServer.cpp" />
     <ClCompile Include="IPAddress.cpp" />
     <ClCompile Include="Logger.cpp" />
@@ -88,9 +89,11 @@
     <ClCompile Include="Scheduler.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SocketHand.cpp" />
+    <ClCompile Include="TimeTask.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AcceptServer.h" />
+    <ClInclude Include="AsyncTask.h" />
     <ClInclude Include="ConnectServer.h" />
     <ClInclude Include="IPAddress.h" />
     <ClInclude Include="Logger.h" />
@@ -98,6 +101,7 @@
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="SocketHand.h" />
+    <ClInclude Include="TimeTask.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
