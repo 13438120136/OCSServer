@@ -3,6 +3,7 @@
 
 #include <vector>
 
+class Session;
 class MessageMap
 {
 public:
@@ -10,7 +11,7 @@ public:
 	~MessageMap();
 
 	virtual int check(std::vector<char> &buf);
-	void dispatchMsg(char *msg, int size);
+	void dispatchMsg(std::vector<char> &buf, Session &session);
 };
 
 #endif

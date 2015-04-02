@@ -5,6 +5,7 @@ Session::Session(uv_tcp_t &client)
 {
 	m_uvBuf = nullptr;
 	m_uvClient.data = this;
+	initAddress();
 }
 
 Session::~Session()
@@ -15,6 +16,21 @@ Session::~Session()
 		m_uvBuf->base = nullptr;
 		m_uvBuf->len = 0;
 	}
+}
+
+void Session::initAddress()
+{
+	struct sockaddr_in addr;
+	int nLen = sizeof(addr);
+	uv_tcp_getpeername((uv_tcp_t *)&m_uvClient, (struct sockaddr *)&addr, &nLen);
+	char *ip = inet_ntoa(addr.sin_addr);
+	int port = addr.sin_port;
+	m_address.setIpAndPort(ip, port);
+}
+
+IPAddress &Session::getAddress()
+{
+	return m_address;
 }
 
 void Session::append(char *buf, int size)
@@ -30,8 +46,7 @@ void Session::render(MessageMap &msgMap)
 		if (offset <= 0)
 			break;
 
-		sendMessage(&m_recvBuf[0], m_recvBuf.size());
-		msgMap.dispatchMsg(&m_recvBuf[0], m_recvBuf.size());
+		msgMap.dispatchMsg(m_recvBuf, *this);
 		m_recvBuf.erase(m_recvBuf.begin(), m_recvBuf.begin() + offset);
 	}
 }

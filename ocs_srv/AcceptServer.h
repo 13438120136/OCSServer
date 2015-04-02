@@ -6,6 +6,7 @@
 #include "Scheduler.h"
 #include "MessageMap.h"
 #include "SocketHand.h"
+#include "IPAddress.h"
 
 class AcceptServer : public SocketHand
 {
@@ -14,10 +15,14 @@ public:
 	~AcceptServer(void);
 
 	MessageMap &msgMap();
-	void start(const std::string &ip, int port);
+	void start(const std::string &ip, unsigned int port);
+	void start(const IPAddress &address);
 
 	//消息到来
 	virtual void msgcomming(Session *session);
+	virtual void connect(Session *session);
+	virtual void disconnect(Session *session);
+
 private:
 	MessageMap m_msgMap;
 };

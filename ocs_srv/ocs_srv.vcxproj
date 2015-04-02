@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClCompile Include="AcceptServer.cpp" />
     <ClCompile Include="ConnectServer.cpp" />
+    <ClCompile Include="IPAddress.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MessageMap.cpp" />
@@ -91,6 +92,7 @@
   <ItemGroup>
     <ClInclude Include="AcceptServer.h" />
     <ClInclude Include="ConnectServer.h" />
+    <ClInclude Include="IPAddress.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MessageMap.h" />
     <ClInclude Include="Scheduler.h" />

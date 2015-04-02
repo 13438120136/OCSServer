@@ -8,7 +8,7 @@ int main()
 {
 	Logger log;
 	Scheduler ss;
-	ConnectServer ac(ss);
+	AcceptServer ac(ss);
 	ac.start("192.168.2.201", 9001);
 	ss.run();
 	return 0;

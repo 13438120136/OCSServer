@@ -39,6 +39,9 @@
     <ClCompile Include="SocketHand.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="IPAddress.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scheduler.h">
@@ -60,6 +63,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SocketHand.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IPAddress.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

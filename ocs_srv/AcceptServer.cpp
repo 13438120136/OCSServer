@@ -23,11 +23,20 @@ void AcceptServer::msgcomming(Session *session)
 	session->render(m_msgMap);
 }
 
-void AcceptServer::start(const std::string &ip, int port)
+void AcceptServer::connect(Session *session)
 {
-	struct sockaddr_in addr;
-	uv_ip4_addr(ip.c_str(), port, &addr);
+	auto &address = session->getAddress();
+	LOG(INFO) << address.ip() << ":" <<address.port() << "come";
+}
 
+void AcceptServer::disconnect(Session *session)
+{
+	auto &address = session->getAddress();
+	LOG(INFO) << address.ip() << ":" <<address.port() << "go";
+}
+
+void AcceptServer::start(const IPAddress &address)
+{
 	int ret = tcp_init();
 	if (ret)
 	{
@@ -35,7 +44,7 @@ void AcceptServer::start(const std::string &ip, int port)
 		exit(-1);
 	}
 
-	ret = tcp_bind((struct sockaddr *)&addr);
+	ret = tcp_bind((struct sockaddr *)&address.address());
 	if (ret)
 	{
 		LOG(ERROR) << "AcceptServer Bind error " << uv_strerror(ret);
@@ -50,4 +59,10 @@ void AcceptServer::start(const std::string &ip, int port)
     }
 
 	LOG(INFO) << "AcceptServer Start Success";
+}
+
+void AcceptServer::start(const std::string &ip, unsigned int port)
+{
+	IPAddress address(ip, port);
+	start(address);
 }

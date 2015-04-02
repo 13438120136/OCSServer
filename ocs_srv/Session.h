@@ -4,6 +4,7 @@
 #include <uv.h>
 #include <vector>
 #include "MessageMap.h"
+#include "IPAddress.h"
 
 class Session
 {
@@ -16,9 +17,14 @@ public:
 	void sendMessage(char *buf, int size);
 	void render(MessageMap &msgMap);
 	void destory();
+	IPAddress &getAddress();
+
+private:
+	void initAddress();
 
 private:
 	std::vector<char> m_recvBuf;
+	IPAddress m_address;
 	uv_tcp_t &m_uvClient;
 	uv_buf_t *m_uvBuf;
 };

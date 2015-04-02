@@ -17,26 +17,27 @@ MessageMap &ConnectServer::msgMap()
 	return m_msgMap;
 }
 
-void ConnectServer::start(const std::string &ip, int port)
+void ConnectServer::start(const IPAddress &address)
 {
-	struct sockaddr_in addr;
-	uv_ip4_addr(ip.c_str(), port, &addr);
-
-	int ret = 0;
-
-	ret = tcp_init();
+	int ret = tcp_init();
 	if (ret)
 	{
 		LOG(ERROR) << "ConnectServer Init error :" << uv_strerror(ret);
 		exit(-1);
 	}
 
-	ret = tcp_connect((struct sockaddr *)&addr);
+	ret = tcp_connect((struct sockaddr *)&address.address());
 	if (ret)
 	{
 		LOG(ERROR) << "ConnectServer Connect error " << uv_strerror(ret);
 		exit(-1);
 	}
+}
+
+void ConnectServer::start(const std::string &ip, unsigned int port)
+{
+	IPAddress address(ip, port);
+	start(address);
 }
 
 void ConnectServer::msgcomming(Session *session)
