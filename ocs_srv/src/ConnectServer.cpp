@@ -6,15 +6,21 @@
 ConnectServer::ConnectServer(Scheduler &scheduler)
 	:SocketHand(scheduler)
 {
+	m_msgMap = new MessageMap;
 }
 
 ConnectServer::~ConnectServer(void)
 {
+	if (m_msgMap != nullptr)
+	{
+		delete m_msgMap;
+		m_msgMap = nullptr;
+	}
 }
 
 MessageMap &ConnectServer::msgMap()
 {
-	return m_msgMap;
+	return *m_msgMap;
 }
 
 void ConnectServer::start(const IPAddress &address)
@@ -42,5 +48,5 @@ void ConnectServer::start(const std::string &ip, unsigned int port)
 
 void ConnectServer::msgcomming(Session *session)
 {
-	session->render(m_msgMap);
+	session->render(*m_msgMap);
 }

@@ -6,21 +6,36 @@
 AcceptServer::AcceptServer(Scheduler &scheduler)
 	:SocketHand(scheduler)
 {
+	m_msgMap = new MessageMap;
 }
 
 AcceptServer::~AcceptServer(void)
 {
+	if (m_msgMap != nullptr)
+	{
+		delete m_msgMap;
+		m_msgMap = nullptr;
+	}
 }
 
 
 MessageMap &AcceptServer::msgMap()
 {
-	return m_msgMap;
+	return *m_msgMap;
+}
+
+void AcceptServer::setMsgMap(MessageMap *msgMap)
+{
+	if (this->m_msgMap)
+	{
+		delete this->m_msgMap;
+		this->m_msgMap = msgMap;
+	}
 }
 
 void AcceptServer::msgcomming(Session *session)
 {
-	session->render(m_msgMap);
+	session->render(*m_msgMap);
 }
 
 void AcceptServer::connect(Session *session)

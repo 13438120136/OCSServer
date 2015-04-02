@@ -16,7 +16,6 @@
     <ClCompile Include="src\ConnectServer.cpp" />
     <ClCompile Include="src\IPAddress.cpp" />
     <ClCompile Include="src\Logger.cpp" />
-    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MessageMap.cpp" />
     <ClCompile Include="src\Scheduler.cpp" />
     <ClCompile Include="src\Session.cpp" />
